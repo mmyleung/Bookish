@@ -4,20 +4,20 @@ using Bookish.Models;
 
 namespace Bookish.Controllers;
 
-public class HomeController : Controller
+public class BookController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<BookController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public BookController(ILogger<BookController> logger)
     {
         _logger = logger;
     }
-
+    [HttpGet("books")]
     public IActionResult Index()
     {
         return View();
     }
-    [HttpGet("privacy")]
+    [HttpGet("book")]
     public IActionResult Privacy()
     {
         return View();
