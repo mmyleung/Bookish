@@ -9,7 +9,8 @@
         {
             <div class="book-card">
                 <img src="@book.CoverPhotoUrl" alt="@book.Title Cover">
-                <h2>@book.Title</h2>
+                <h2><a asp-controller="Catalogue"
+                        asp-action="Book">@book.Title</a></h2>
                 <p>By @book.Author</p>
             </div>
         }

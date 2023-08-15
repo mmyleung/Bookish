@@ -12,7 +12,7 @@ public class BookController : Controller
     {
         _logger = logger;
     }
-    [HttpGet("Books")]
+    [HttpGet("Catalogue")]
     public IActionResult Index()
     {   var book1 = new BookViewModel(9781856132428, "Winnie-the-Pooh", "A. A. Milne", "Children's Literature", 1926);
         book1.CoverPhotoUrl = "https://upload.wikimedia.org/wikipedia/en/c/c5/Winnie-the-Pooh_%28book%29.png";
@@ -25,7 +25,7 @@ public class BookController : Controller
         books.Add(book2);
         return View(books);
     }
-    [HttpGet("Books/book")]
+    [HttpGet("Catalogue/book")]
     public IActionResult Book()
     {
         var book = new BookViewModel(9781856132428, "Winnie-the-Pooh", "A. A. Milne", "Children's Literature", 1926);
