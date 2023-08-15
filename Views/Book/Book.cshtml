@@ -1,0 +1,20 @@
+﻿@model BookViewModel;
+@{
+    ViewData["Title"] = "Book";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Title</h1>
+    <h2>@Model.Author</h2>
+    <p>Published: @Model.Year</p>
+    @if(Model.CoverPhotoUrl != null)
+    {
+        <img src="@Model.CoverPhotoUrl" alt="@Model.Title"/>
+    }
+    @if(Model.Blurb != null)
+    {
+        <p>@Model.Blurb</p>
+    }
+    <p>ISBN: @Model.ISBN</p>
+
+</div>
