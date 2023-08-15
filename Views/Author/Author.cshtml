@@ -1,0 +1,18 @@
+@model AuthorViewModel;
+@{
+    ViewData["Title"] = "Author";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Name</h1>
+    @if(Model.CoverPhotoUrl != null)
+    {
+        <img src="@Model.CoverPhotoUrl" alt="@Model.Title"/>
+    }
+    <p>Born: @Model.BirthYear</p>
+    @if(Model.Bio != null)
+    {
+        <p>@Model.Bio</p>
+    }
+    <p>@Model.Books</p>
+</div>
