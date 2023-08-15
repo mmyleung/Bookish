@@ -1,0 +1,16 @@
+﻿@model List<BookViewModel>
+@{
+    ViewData["Title"] = "Library Catalogue";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Library Catalogue</h1>
+    @foreach (BookViewModel book in Model)
+        {
+            <div class="book-card">
+                <img src="@book.CoverPhotoUrl" alt="@book.Title Cover">
+                <h2>@book.Title</h2>
+                <p>By @book.Author</p>
+            </div>
+        }
+</div>

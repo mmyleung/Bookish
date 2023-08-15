@@ -12,15 +12,20 @@ public class BookController : Controller
     {
         _logger = logger;
     }
-    [HttpGet("books")]
+    [HttpGet("Books")]
     public IActionResult Index()
-    {
+    {   
+        List<BookViewModel> books = new List<BookViewModel>();
+        books.Add()
         return View();
     }
-    [HttpGet("book")]
-    public IActionResult Privacy()
+    [HttpGet("Books/book")]
+    public IActionResult Book()
     {
-        return View();
+        var book = new BookViewModel(9781856132428, "Winnie-the-Pooh", "A. A. Milne", "Children's Literature", 1926);
+        book.CoverPhotoUrl = "https://upload.wikimedia.org/wikipedia/en/c/c5/Winnie-the-Pooh_%28book%29.png";
+        book.Blurb = "This silly old bear and his friends Piglet, Christopher Robin, Owl, Kanga, Roo and Tigger have bounced and sighed and tiddly-om-pommed their way into legend but they still find their home in the wood, where they continue to make friends with new generations of children more than a hundred years after their creation.";
+        return View(book);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
