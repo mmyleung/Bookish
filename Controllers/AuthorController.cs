@@ -12,16 +12,27 @@ public class AuthorController : Controller
     {
         _logger = logger;
     }
-    [Route("/Authors")]
+    [Route("Authors")]
     public IActionResult Index()
     {
-        return View();
+        var author1 = new AuthorViewModel("A. A. Milne", 1882, "...");
+        author1.CoverPhotoUrl = "https://cdn.britannica.com/22/66322-050-9A24E091/AA-Milne-1920.jpg";
+        author1.Bio = "Alan Alexander Milne was an English writer best known for his books about the teddy bear Winnie-the-Pooh, as well as for children's poetry. Milne was primarily a playwright before the huge success of Winnie-the-Pooh overshadowed all his previous work.";
+        var author2 = new AuthorViewModel("Chris Broad", 1990, "...");
+        author2.CoverPhotoUrl = "https://static.tvtropes.org/pmwiki/pub/images/chris_broad_6.jpg";
+        author2.Bio = "Chris Broad is a British filmmaker and founder of the Abroad in Japan Youtube channel, one of the largest foreign Youtube channels in Japan with over 2.5 million subscribers and 400 million views. Over 10 years and 200 videos, Chris has visited all of Japan's 47 prefectures, focussing Abroad in Japan on travel, culture, food and covered contemporary issues through documentaries on the Fukushima nuclear disaster and the Tohoku earthquake and tsunami. His experiences have made him a sought after voice on life inside Japan, featured on the BBC, Tedx, NHK and the Japan Times.";
+        List<AuthorViewModel> authors = new List<AuthorViewModel>();
+        authors.Add(author1);
+        authors.Add(author2);
+        return View(authors);
     }
-    [HttpGet("Author")]
-    public IActionResult Privacy()
+    [HttpGet("Authors/Author")]
+    public IActionResult Author()
     {
-        var Author 
-        return View();
+        var author = new AuthorViewModel("A. A. Milne", 1882, "...");
+        author.CoverPhotoUrl = "https://cdn.britannica.com/22/66322-050-9A24E091/AA-Milne-1920.jpg";
+        author.Bio = "Alan Alexander Milne was an English writer best known for his books about the teddy bear Winnie-the-Pooh, as well as for children's poetry. Milne was primarily a playwright before the huge success of Winnie-the-Pooh overshadowed all his previous work.";
+        return View(author);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

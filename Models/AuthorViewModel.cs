@@ -7,12 +7,12 @@ public class AuthorViewModel
     public string? CoverPhotoUrl  { get; set; }
     public string? Bio { get; set; }
 
-    public Int BirthYear { get; set; }
+    public int BirthYear { get; set; }
 
-    public AuthorViewModel (string books, string name, int birthyear)
+    public AuthorViewModel (string name, int birthyear, string books)
     {
-        Books = books;
         Name = name;
         BirthYear = birthyear;       
+        Books = books;
     }
 }
