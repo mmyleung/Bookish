@@ -26,7 +26,7 @@ public class AuthorController : Controller
         authors.Add(author2);
         return View(authors);
     }
-    [HttpGet("Authors/Author")]
+    [HttpGet("Author")]
     public IActionResult Author()
     {
         var author = new AuthorViewModel("A. A. Milne", 1882, "...");
