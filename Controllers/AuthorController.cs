@@ -1,15 +1,18 @@
+namespace Bookish;
+
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bookish.Models;
-
-namespace Bookish.Controllers;
+using Bookish.Models.Database;
 
 public class AuthorController : Controller
 {
     private readonly ILogger<AuthorController> _logger;
+    private readonly  IBookRepo _bookRepo;
 
-    public AuthorController(ILogger<AuthorController> logger)
+    public AuthorController(IBookRepo bookRepo, ILogger<AuthorController> logger)
     {
+        _bookRepo = bookRepo;
         _logger = logger;
     }
     [Route("Authors")]
@@ -26,9 +29,10 @@ public class AuthorController : Controller
         authors.Add(author2);
         return View(authors);
     }
-    [HttpGet("Author")]
+    [HttpGet("Authors/{author}")]
     public IActionResult Author()
     {
+        AuthorModel authorModel = new AuthorModel();
         var author = new AuthorViewModel("A. A. Milne", 1882, new List<BookViewModel>());
         author.CoverPhotoUrl = "https://cdn.britannica.com/22/66322-050-9A24E091/AA-Milne-1920.jpg";
         author.Bio = "Alan Alexander Milne was an English writer best known for his books about the teddy bear Winnie-the-Pooh, as well as for children's poetry. Milne was primarily a playwright before the huge success of Winnie-the-Pooh overshadowed all his previous work.";
