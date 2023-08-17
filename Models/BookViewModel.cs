@@ -33,5 +33,6 @@ public class BookViewModel
         Genre = book.Genre;
         Year = book.Year.Value;
         Copies = new List<CopyViewModel>();
+        CoverPhotoUrl = book.CoverPhotoUrl;
     }
 }

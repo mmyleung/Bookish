@@ -10,7 +10,7 @@
             <div class="book-card">
                 <img src="@book.CoverPhotoUrl" alt="@book.Title Cover">
                 <h2><a asp-controller="Catalogue"
-                        asp-action="Book">@book.Title</a></h2>
+                        asp-action="@book.ISBN">@book.Title</a></h2>
                 <p>By @string.Join(" and ", book.Authors.Select(a => a.Name))</p>
             </div>
         }
