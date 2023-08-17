@@ -3,29 +3,39 @@
     ViewData["Title"] = "Library Catalogue";
 }
 
-<div class="text-center col-md-4 mb-4 container">
-    <h1 class="card display-4 row justify-content-center">Welcome to the Library Catalogue</h1>
-    @foreach (BookViewModel book in Model)
+<div class="container">
+    <h1 class="text-center display-4">📖 Welcome to the Library Catalogue 📖</h1>
+    <div class="row">
+        @foreach (BookViewModel book in Model)
         {
-            <div class="card mb-3" style="max-width: 540px">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                    <img src="@book.CoverPhotoUrl" class="img-fluid rounded-start" alt="@book.Title Cover">
-                    </div>
-                    <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">@book.Title</h5>
-                        @foreach(AuthorViewModel author in book.Authors)
-                        {
-                            <a asp-controller="Authors"
-                                asp-action="@author.Name">
-                                <p class="card-text">@author.Name</p>
-                            </a>
-                        }
+            <div class="col-md-6 mb-4">
+                <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                                <a asp-controller="Catalogue"
+                            asp-action="@book.ISBN">
+                                <img src="@book.CoverPhotoUrl" class="img-fluid rounded-start" alt="@book.Title Cover">
+                                </a>
+                        </div>
                         
-                    </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a asp-controller="Catalogue"
+                                     asp-action="@book.ISBN">
+                                    <h5 class="card-title">@book.Title</h5>
+                                </a>
+                                @foreach(AuthorViewModel author in book.Authors)
+                                {
+                                    <a asp-controller="Authors"
+                                       asp-action="@author.Name">
+                                       <p class="card-text">@author.Name</p>
+                                    </a>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         }
+    </div>
 </div>
