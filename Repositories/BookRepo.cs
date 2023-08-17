@@ -4,7 +4,12 @@ using Bookish.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-class BookRepo
+public interface IBookRepo
+{
+    List<BookModel> GetAllBooks();
+    BookModel GetBookByIsbn(string Isbn);
+}
+public class BookRepo : IBookRepo
 {
     private readonly BookishDbContext _context;
 
@@ -15,7 +20,10 @@ class BookRepo
 
     public List<BookModel> GetAllBooks()
     {
-        return _context.Books.ToList();
+        return _context.Books
+        .Include(b => b.Authors)
+        .Include(b => b.Copies)
+        .ToList();
     }
 
     public BookModel GetBookByIsbn(string Isbn)

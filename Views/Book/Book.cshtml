@@ -5,7 +5,7 @@
 
 <div class="text-center">
     <h1 class="display-4">@Model.Title</h1>
-    <h2>@Model.Author</h2>
+    <h2>@string.Join(" and ", Model.Authors.Select(a => a.Name))</h2>
     <p>Published: @Model.Year</p>
     @if(Model.CoverPhotoUrl != null)
     {

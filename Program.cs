@@ -1,7 +1,13 @@
+using Bookish;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IBookRepo, BookRepo>();
+
+builder.Services.AddDbContext<BookishDbContext>();
 
 var app = builder.Build();
 
