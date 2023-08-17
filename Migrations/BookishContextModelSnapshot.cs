@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Bookish.Migrations
 {
-    [DbContext(typeof(BookishContext))]
+    [DbContext(typeof(BookishDbContext))]
     partial class BookishContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Bookish.Migrations
 {
-    [DbContext(typeof(BookishContext))]
+    [DbContext(typeof(BookishDbContext))]
     [Migration("20230816132504_CreateBookAuthorCopyDB")]
     partial class CreateBookAuthorCopyDB
     {
