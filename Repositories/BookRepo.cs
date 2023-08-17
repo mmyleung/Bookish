@@ -2,6 +2,7 @@ namespace Bookish;
 using Bookish;
 using Bookish.Models.Database;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 class BookRepo
 {

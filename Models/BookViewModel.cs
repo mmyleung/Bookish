@@ -1,3 +1,5 @@
+using Bookish.Models.Database;
+
 namespace Bookish.Models;
 
 public class BookViewModel
@@ -20,5 +22,15 @@ public class BookViewModel
         Genre = genre;
         Year = year;
         Copies = new List<CopyViewModel>();
+    }
+
+    public BookViewModel (BookModel book)
+    {
+        ISBN = book.ISBN;
+        Title = book.Title;
+        // Author = book.Authors;
+        Genre = book.Genre;
+        Year = book.Year;
+        // Copies = book.Copies;
     }
 }
