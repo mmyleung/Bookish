@@ -7,5 +7,5 @@ public class CopyModel
 {
     public long Barcode { get; set; }
 
-    public BookModel Book { get; set; }
+    public BookModel? Book { get; set; }
 }

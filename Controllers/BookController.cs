@@ -25,7 +25,7 @@ public class BookController : Controller
         List<BookViewModel> books = new List<BookViewModel> ();
         foreach (var book in allBooks)
         {
-            BookViewModel bookView = new BookViewModel(book);
+            BookViewModel bookView = new BookViewModel(book.ISBN, book);
             books.Add(bookView);
         }
 
@@ -37,7 +37,7 @@ public class BookController : Controller
     public IActionResult Book(string isbn)
     {
         BookModel bookModel = _bookRepo.GetBookByIsbn(isbn);
-        BookViewModel book = new BookViewModel(bookModel);
+        BookViewModel book = new BookViewModel(bookModel.ISBN, bookModel);
         return View(book);
     }
 

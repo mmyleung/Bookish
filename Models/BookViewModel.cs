@@ -30,7 +30,7 @@ public class BookViewModel
         Authors = book.Authors.Select(a => new AuthorViewModel(a.Name, a.BirthYear.Value, new List<BookViewModel>())).ToList();
         Genre = book.Genre;
         Year = book.Year.Value;
-        Copies = book.Copies.Count();
+        Copies = book.Copies?.Count() ?? 0;
         CoverPhotoUrl = book.CoverPhotoUrl;
     }
 }

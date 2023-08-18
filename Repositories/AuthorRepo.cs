@@ -20,13 +20,16 @@ public class AuthorRepo : IAuthorRepo
     public List<AuthorModel> GetAuthors()
     {
         return _context.Authors
-        .ToList();
+            .Include(b => b.Books)
+            .Include(b => b.Copies)
+            .ToList();
     }
 
     public AuthorModel GetAuthorById(int id)
     {
         return _context.Authors
             .Include(b => b.Books)
+            .Include(b => b.Copies)
             .Where(b => b.Id == id)
             .Single();
     }

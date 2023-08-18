@@ -11,4 +11,6 @@ public class AuthorModel
 
     public List<BookModel>? Books { get; set; }
 
+    public List<CopyModel>? Copies { get; set; }
+
 }

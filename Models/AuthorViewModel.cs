@@ -19,10 +19,10 @@ public class AuthorViewModel
         Books = books;
     }
 
-    public AuthorViewModel (AuthorModel authors)
+    public AuthorViewModel (AuthorModel author)
     {
-        Name = authors.Name;
-        BirthYear = authors.BirthYear;       
-        Books = authors.Books.Select(book => new BookViewModel(book.ISBN, book.Title, new List<AuthorViewModel>(), book.Genre, book.Year));
+        Name = author.Name;
+        BirthYear = author.BirthYear;       
+        Books = author.Books.Select(b => new BookViewModel(b.ISBN, b)).ToList();
     }
 }
