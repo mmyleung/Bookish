@@ -10,7 +10,7 @@ public class BookViewModel
     public string? CoverPhotoUrl  { get; set; }
     public string? Blurb { get; set; }
     public string Genre {get; set; }
-    public int Year { get; set; }
+    public int? Year { get; set; }
 
     public int Copies { get; set; }
 
@@ -23,7 +23,7 @@ public class BookViewModel
         Year = year;
     }
 
-    public BookViewModel (BookModel book)
+    public BookViewModel (string? iSBN, BookModel book)
     {
         ISBN = book.ISBN;
         Title = book.Title;

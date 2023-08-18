@@ -8,16 +8,18 @@ using Bookish.Models.Database;
 public class AuthorController : Controller
 {
     private readonly ILogger<AuthorController> _logger;
-    private readonly  IBookRepo _bookRepo;
+    private readonly  IAuthorRepo _authorRepo;
 
-    public AuthorController(IBookRepo bookRepo, ILogger<AuthorController> logger)
+    public AuthorController(IAuthorRepo authorRepo, ILogger<AuthorController> logger)
     {
-        _bookRepo = bookRepo;
+        _authorRepo = authorRepo;
         _logger = logger;
     }
     [Route("Authors")]
     public IActionResult Index()
-    {
+    {   
+        List<AuthorModel> allAuthors = _authorRepo.GetAuthors();
+        List<AuthorViewModel> authors = new List<AuthorViewModel>(allAuthors);
         var author1 = new AuthorViewModel("A. A. Milne", 1882, new List<BookViewModel>());
         author1.CoverPhotoUrl = "https://cdn.britannica.com/22/66322-050-9A24E091/AA-Milne-1920.jpg";
         author1.Bio = "Alan Alexander Milne was an English writer best known for his books about the teddy bear Winnie-the-Pooh, as well as for children's poetry. Milne was primarily a playwright before the huge success of Winnie-the-Pooh overshadowed all his previous work.";
