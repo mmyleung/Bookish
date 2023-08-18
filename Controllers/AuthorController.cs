@@ -18,7 +18,7 @@ public class AuthorController : Controller
     [Route("Authors")]
     public IActionResult Index()
     {   
-        IEnumerable<AuthorModel> allAuthors = _authorRepo.GetAuthors();
+        List<AuthorModel> allAuthors = _authorRepo.GetAuthors();
         List<AuthorViewModel> authors = new List<AuthorViewModel>();
         foreach (var author in allAuthors)
         {
@@ -27,13 +27,11 @@ public class AuthorController : Controller
         }
         return View(authors);
     }
-    [HttpGet("Authors/{author}")]
-    public IActionResult Author()
+    [HttpGet("Authors/{authorId}")]
+    public IActionResult Author(int authorId)
     {
-        AuthorModel authorModel = new AuthorModel();
-        var author = new AuthorViewModel("A. A. Milne", 1882, new List<BookViewModel>());
-        author.CoverPhotoUrl = "https://cdn.britannica.com/22/66322-050-9A24E091/AA-Milne-1920.jpg";
-        author.Bio = "Alan Alexander Milne was an English writer best known for his books about the teddy bear Winnie-the-Pooh, as well as for children's poetry. Milne was primarily a playwright before the huge success of Winnie-the-Pooh overshadowed all his previous work.";
+        AuthorModel authorModel = _authorRepo.GetAuthorById(authorId);
+        var author = new AuthorViewModel(authorModel);
         return View(author);
     }
 

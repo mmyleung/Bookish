@@ -12,6 +12,8 @@ public class AuthorViewModel
 
     public int? BirthYear { get; set; }
 
+    public int? ID { get; set; }
+
     public AuthorViewModel (string name, int birthyear, List<BookViewModel> books)
     {
         Name = name;
@@ -24,5 +26,6 @@ public class AuthorViewModel
         Name = author.Name;
         BirthYear = author.BirthYear;       
         Books = author.Books.Select(b => new BookViewModel(b.ISBN, b)).ToList();
+        ID = author.Id;
     }
 }
