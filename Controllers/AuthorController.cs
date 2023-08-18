@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bookish.Models;
 using Bookish.Models.Database;
+using System.Linq;
 
 public class AuthorController : Controller
 {
@@ -19,12 +20,10 @@ public class AuthorController : Controller
     public IActionResult Index()
     {   
         List<AuthorModel> allAuthors = _authorRepo.GetAuthors();
-        List<AuthorViewModel> authors = new List<AuthorViewModel>();
-        foreach (var author in allAuthors)
-        {
-            AuthorViewModel authorView = new AuthorViewModel(author);
-            authors.Add(authorView);
-        }
+        List<AuthorViewModel> authors =  allAuthors
+            .OrderBy(author => author.Name) // Order by author name alphabetically
+            .Select(author => new AuthorViewModel(author))
+            .ToList();
         return View(authors);
     }
     [HttpGet("Authors/{authorId}")]

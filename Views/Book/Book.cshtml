@@ -9,7 +9,7 @@
         @foreach(AuthorViewModel author in Model.Authors)
         {
             <a asp-controller="Authors"
-                asp-action="@author.Name">@author.Name</a>
+                asp-action="@author.ID">@author.Name</a>
         }
     </h2>
     <p>Published: @Model.Year</p>
@@ -17,11 +17,9 @@
     {
         <img src="@Model.CoverPhotoUrl" alt="@Model.Title"/>
     }
-    @if(Model.Blurb != null)
-    {
-        <p>@Model.Blurb</p>
-    }
     <p>ISBN: @Model.ISBN</p>
     <p>Copies: @Model.Copies</p>
+    <p>@Model.Blurb</p>
+
 
 </div>

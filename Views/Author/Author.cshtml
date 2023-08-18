@@ -5,14 +5,23 @@
 
 <div class="text-center">
     <h1 class="display-4">@Model.Name</h1>
+    <p>Born: @Model.BirthYear</p>
     @if(Model.CoverPhotoUrl != null)
     {
-        <img src="@Model.CoverPhotoUrl" alt="@Model.Name"/>
+        <img style="height: 300px" src="@Model.CoverPhotoUrl" alt="@Model.Name"/>
     }
-    <p>Born: @Model.BirthYear</p>
+    
     @if(Model.Bio != null)
     {
         <p>@Model.Bio</p>
     }
-    <p>@Model.Books</p>
+
+    <p>Books by Author:</p>
+    @foreach(BookViewModel book in Model.Books)
+    {   
+         <a asp-controller="Catalogue"
+             asp-action="@book.ISBN">
+             <p>@book.Title</p>
+        </a>
+    }
 </div>

@@ -27,10 +27,11 @@ public class BookViewModel
     {
         ISBN = book.ISBN;
         Title = book.Title;
-        Authors = book.Authors.Select(a => new AuthorViewModel(a.Name, a.BirthYear.Value, new List<BookViewModel>())).ToList();
+        Authors = book.Authors.Select(a => new AuthorViewModel(a.Name, a.BirthYear.Value, new List<BookViewModel>(), a.Id.Value)).ToList();
         Genre = book.Genre;
         Year = book.Year.Value;
         Copies = book.Copies?.Count() ?? 0;
         CoverPhotoUrl = book.CoverPhotoUrl;
+        Blurb = book.Blurb;
     }
 }
