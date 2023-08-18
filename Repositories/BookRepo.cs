@@ -8,6 +8,7 @@ public interface IBookRepo
 {
     List<BookModel> GetAllBooks();
     BookModel GetBookByIsbn(string Isbn);
+    List<BookModel> SearchBooks(string query);
 }
 public class BookRepo : IBookRepo
 {
@@ -33,5 +34,14 @@ public class BookRepo : IBookRepo
             .Include(b => b.Copies)
             .Where(b => b.ISBN == Isbn)
             .Single();
+    }
+
+    public List<BookModel> SearchBooks(string query)
+    {
+        return _context.Books
+        .Include(b => b.Authors)
+        .Include(b => b.Copies)
+        .Where(b => b.Title == query)
+        .ToList();
     }
 }

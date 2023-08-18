@@ -7,6 +7,7 @@ public interface IAuthorRepo
 {
     List<AuthorModel> GetAuthors();
     AuthorModel GetAuthorById(int id);
+    List<AuthorModel> SearchAuthors(string query);
 }
 public class AuthorRepo : IAuthorRepo
 {
@@ -32,6 +33,15 @@ public class AuthorRepo : IAuthorRepo
             .Include(b => b.Copies)
             .Where(b => b.Id == id)
             .Single();
+    }
+
+    public List<AuthorModel> SearchAuthors(string query)
+    {
+        return _context.Authors
+            .Include(b => b.Books)
+            .Include(b => b.Copies)
+            .Where(b => b.Name == query)
+            .ToList();
     }
 
 }

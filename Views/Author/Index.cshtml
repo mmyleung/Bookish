@@ -3,14 +3,39 @@
     ViewData["Title"] = "Authors";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Authors</h1>
-    @foreach (AuthorViewModel author in Model)
+<div class="container">
+    <h1 class="text-center display-4">👨‍🏫 Authors 👩‍🏫</h1>
+    <form asp-controller="Authors" asp-action="Search" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control" name="query" placeholder="Search authors...">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+    <div class="row">
+        @foreach (AuthorViewModel author in Model)
         {
-            <div class="author-card mb-3">
-                <img style="height: 250px"src="@author.CoverPhotoUrl" alt="@author.Name">
-                <h2><a asp-controller="Authors"
-                        asp-action="@author.ID">@author.Name</a></h2>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <a asp-controller="Authors" asp-action="@author.ID">
+                                <img src="@author.CoverPhotoUrl"
+                                     class="img-fluid rounded-start"
+                                     alt="@author.Name">
+                            </a>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a asp-controller="Authors"
+                                     asp-action="@author.ID">
+                                    <h5 class="card-title">@author.Name</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         }
+    </div>
 </div>

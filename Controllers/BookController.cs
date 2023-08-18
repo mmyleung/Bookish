@@ -41,6 +41,18 @@ public class BookController : Controller
         return View(book);
     }
 
+    [HttpGet("Catalogue/Search")]
+    public IActionResult Search(string query)
+    {
+        List<BookModel> searchResults = _bookRepo.SearchBooks(query); // Implement this method in your repository
+        List<BookViewModel> books = searchResults
+            .OrderBy(book => book.Title)
+            .Select(book => new BookViewModel(book.ISBN, book))
+            .ToList();
+
+        return View("Index", books);
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

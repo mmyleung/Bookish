@@ -34,6 +34,18 @@ public class AuthorController : Controller
         return View(author);
     }
 
+    [HttpGet("Authors/Search")]
+    public IActionResult Search(string query)
+    {
+        List<AuthorModel> searchResults = _authorRepo.SearchAuthors(query); // Implement this method in your repository
+        List<AuthorViewModel> authors = searchResults
+            .OrderBy(author => author.Name)
+            .Select(author => new AuthorViewModel(author))
+            .ToList();
+
+        return View("Index", authors);
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
